@@ -69,6 +69,27 @@ zeus preview --target "Amazfit T-Rex 3 Pro (48mm)"   # prints a fresh install QR
 
 Long-press the watchface → **Edit**. Each color selector has a caption that tells you which zone it changes.
 
+## Credits & Acknowledgments
+
+Special thanks to the author of [**BSF Dash**](https://www.reddit.com/r/amazfit/comments/1xqjy5j/bsf_dash/) (`u/Ariquitaun`).
+
+While no source code was directly reused (BSF Dash was distributed as compiled QuickJS bytecode binary), analyzing its binary package served as a valuable technical reverse-engineering reference for deciphering undocumented Zepp OS 3.6+ / T-Rex 3 Pro hardware specifications:
+
+### What was learned / referenced from BSF Dash:
+* **Target and Manifest specifications (`app.json`)**: Exact device target IDs for the T-Rex 3 / Rocky platform (`10551552`, `10551553`, `10551555`) and the required health data permissions (`data:user.hd.pai`, `calorie`, `step`, etc.).
+* **Undocumented Zepp OS APIs & Sensor constants**: IDs for metrics such as `ui.data_type.BIO_CHARGE`, `ui.data_type.HRV`, and `ui.data_type.PAI_WEEKLY`; structure for the undocumented `GRADKIENT_POLYLINE` widget for heart rate sparklines; and valid ranges for `WATCHFACE_EDIT_GROUP` (`type >= 100000`).
+* **Outer Arc Geometry**: Clockwise radial sweep angles (`222°..318°` steps, `138°..42°` calories, `-54°..54°` battery) across the 224–226 px radius.
+* **Standard iconography mappings**: The 29-state weather mapping for `IMG_LEVEL`.
+
+### What was developed from scratch for the TR3X series:
+* **100% of the JavaScript codebase (`watchface/index.js`)**: Clean modular JavaScript built on `@zos/ui` and `@zos/sensor` with full reactive lifecycle handling (`applyLayoutAndColors`, `syncEditOptions`, `WIDGET_DELEGATE.resume_call`) to enable instant hot-switching of styles and color themes without reload bugs.
+* **Custom Typography & High-Visibility Digits**: Vector-crafted block digits (108 px tall) with dedicated high-visibility solid dimmed AOD numbers (avoiding unreadable thin hollow outlines), generated via Python/Pillow.
+* **Sub-pixel Optical Centering**: Custom dynamic layout engine calculating glyph widths in real-time to center `HH:MM` perfectly regardless of narrow numerals (e.g., `1`).
+* **True Neutral AMOLED Colorimetry**: Pure neutral gray palettes (`R === G === B`) designed from scratch to prevent AMOLED blue-tint quantization artifacts.
+* **Heart Rate Sparkline Engine**: Custom temporal rolling window parser with moving average smoothing and widget-relative coordinate mapping.
+
+In short, BSF Dash provided the foundational hardware compatibility and API map for the T-Rex 3 Pro, while the visual styling, typography, assets, and runtime JavaScript code were completely designed and implemented from scratch.
+
 ## Development & Skill Guide
 
 For detailed technical rules, firmware quirks, lifecycle management (`WIDGET_DELEGATE`), sensor exceptions (RHR), and optical centering learned on this project:
