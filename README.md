@@ -68,3 +68,10 @@ zeus preview --target "Amazfit T-Rex 3 Pro (48mm)"   # prints a fresh install QR
 ## Editing on the watch
 
 Long-press the watchface → **Edit**. Each color selector has a caption that tells you which zone it changes.
+
+## Development & Skill Guide
+
+For detailed technical rules, firmware quirks, lifecycle management (`WIDGET_DELEGATE`), sensor exceptions (RHR), and optical centering learned on this project:
+- See the [Technical Development Guide](docs/DEVELOPMENT_GUIDE.md).
+- Antigravity / Gemini CLI workspace skill: [zepp-os-watchface](.gemini/skills/zepp-os-watchface/SKILL.md).
+
