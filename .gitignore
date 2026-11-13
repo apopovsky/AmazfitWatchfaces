@@ -1,0 +1,25 @@
+# Dependencies & build output
+node_modules/
+dist/
+*.zab
+*.zpk
+
+# Local agent / editor config
+.agents/
+.vscode/
+.idea/
+
+# Scratch / stray screenshots
+exec-*.png
+__pycache__/
+*.pyc
+
+# Generated preview renders (scripts write here)
+*/preview/
+
+# Secrets (never commit)
+.env
+.env.*
+*.pem
+*.key
+.zeus/
