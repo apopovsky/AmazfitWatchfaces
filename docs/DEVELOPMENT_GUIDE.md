@@ -1,6 +1,6 @@
 # Guía de Desarrollo de Watchfaces para Amazfit T-Rex 3 Pro (Zepp OS)
 
-Guía técnica y compendio de lecciones aprendidas durante el desarrollo de la serie **TR3X** (`wf-tactical-amber`, `wf-dual-styles`, `wf-minimal-grid`, `wf-dual-lavender`).
+Guía técnica y compendio de lecciones aprendidas durante el desarrollo de la serie **TR3X** (`wf-tactical-amber`, `wf-minimal-grid`, `wf-dual-lavender`).
 
 ---
 
